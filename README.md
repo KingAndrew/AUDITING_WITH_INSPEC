@@ -1,4 +1,5 @@
-# AUDITING WITH INSPEC BADGE TOPICS AKA Inspec Certification Study Guide
+# AUDITING WITH INSPEC BADGE TOPICS 
+# A.K.A. Inspec Certification Study Guide
 The Auditing With InSpec badge is awarded when someone proves that they understand the
 core elements of InSpec. 
 Candidates must show:
