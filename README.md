@@ -2,13 +2,13 @@
 The Auditing With InSpec badge is awarded when someone proves that they understand the
 core elements of InSpec. 
 Candidates must show:
-- An understanding of installing inspec.
-- An understanding of running inspec.
-- An understanding of inspec profiles.
-- An understanding of controls and metadata.
-- An understanding of troubleshooting InSpec.
+1. An understanding of installing inspec.
+2. An understanding of running inspec.
+3. An understanding of inspec profiles.
+4. An understanding of controls and metadata.
+5. An understanding of troubleshooting InSpec.
 
-## INSTALLING INSPEC
+## 1. INSTALLING INSPEC
 ### INSPEC INSTALLATION AND TARGET NODE
 
 Candidates should understand:
@@ -22,7 +22,7 @@ Candidates should understand:
 - How to install InSpec software on a workstation.
 - ChefDK vs. InSpec Omnibus vs. Ruby Gem.
 
-## RUNNING INSPEC
+## 2. RUNNING INSPEC
 ### RUNNING ON A LOCAL SYSTEM
 Candidates should understand:
 - How to invoke InSpec locally.
@@ -70,7 +70,7 @@ Candidates should understand:
 - What SQL database resources are available, and their matchers.
 - How to execute an SQL query within a control.
 
-## INSPEC PROFILES
+## 3. INSPEC PROFILES
 
 ### METADATA AND THE LOCK FILE
 Candidates should understand:
@@ -149,7 +149,7 @@ Candidates should understand:
 - How you would run a profile directly from GitHub or the Supermarket.
 
 
-## CONTROLS AND METADATA
+## 4. CONTROLS AND METADATA
 ### USING CONTROL METADATA
 Candidates should understand:
 - What a control's impact metadata defines.
@@ -164,7 +164,7 @@ Candidates should understand:
   - 0.1 - <0.4 Minor Issues
 - Using refs to bridge the gap between documented compliance policies and executable code.
 
-## TROUBLESHOOTING
+## 5. TROUBLESHOOTING
 ### USING THE INSPEC SHELL
 Candidates should understand:
 - What InSpec Shell is.
