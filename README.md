@@ -2,11 +2,11 @@
 The Auditing With InSpec badge is awarded when someone proves that they understand the
 core elements of InSpec. 
 Candidates must show:
-1. An understanding of installing inspec.
-2. An understanding of running inspec.
-3. An understanding of inspec profiles.
-4. An understanding of controls and metadata.
-5. An understanding of troubleshooting InSpec.
+1.  An understanding of installing inspec.
+2.  An understanding of running inspec.
+3.  An understanding of inspec profiles.
+4.  An understanding of controls and metadata.
+5.  An understanding of troubleshooting InSpec.
 
 ## 1. INSTALLING INSPEC
 ### INSPEC INSTALLATION AND TARGET NODE
