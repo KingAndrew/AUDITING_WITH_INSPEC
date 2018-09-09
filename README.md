@@ -112,12 +112,17 @@ Test Summary: 1 successful, 0 failures, 0 skipped
 - Invoking specific controls.
 An InSpec test is called a control. Controls are grouped into profiles. 
 
+### RUNNING ON A REMOTE SYSTEM
+To run a profile remotely, you run **inspec exec** much like you do locally. However, you also specify the **-t** (target) argument to specify the URI of your target system.
+
 ### RUNNING ON A REMOTE SYSTEMS VIA SSH
 Candidates should understand:
+
 - Using inspec detect on a remote system.
-- Using InSpec to scan a local Linux system using a local profile.
 - Using InSpec to scan a local Linux system using a remote profile.
 - Using InSpec to scan a remote Linux system using a local profile.
+
+
 - Using InSpec to scan a remote Linux system using a remote profile.
 - Using basic authentication to authenticate with a target system over SSH.
 - Using keys to authenticate with a target system over SSH.
@@ -134,7 +139,20 @@ Candidates should understand:
 
 ### RUNNING ON CONTAINERS
 Candidates should understand:
-- Using InSpec to scan a docker container using a local profile.
+- Using inSpec to scan a docker container using a local profile.
+```
+inspec exec auditd -t ssh://root:password@target
+
+Profile: InSpec Profile (auditd)
+Version: 0.1.0
+Target:  ssh://root@target:22
+
+  System Package auditd
+     ×  should be installed
+     expected that `System Package auditd` is installed
+
+Test Summary: 0 successful, 1 failure, 0 skipped
+```
 - Using InSpec to scan a docker container using a remote profile.
 - Authenticating with a docker container with InSpec.
 
