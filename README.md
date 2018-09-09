@@ -31,8 +31,34 @@ Candidates should understand:
 ## 2. RUNNING INSPEC
 ### RUNNING ON A LOCAL SYSTEM
 Candidates should understand:
+- What inspec commands are available.
+```
+>inspec help
+Commands:
+  inspec archive PATH                # archive a profile to tar.gz (default) or zip
+  inspec artifact SUBCOMMAND ...     # Sign, verify and install artifacts
+  inspec check PATH                  # verify all tests at the specified PATH
+  inspec compliance SUBCOMMAND ...   # Chef Compliance commands
+  inspec detect                      # detect the target OS
+  inspec env                         # Output shell-appropriate completion configuration
+  inspec exec PATHS                  # run all test files at the specified PATH.
+  inspec habitat SUBCOMMAND ...      # Commands for InSpec + Habitat Integration
+  inspec help [COMMAND]              # Describe available commands or one specific command
+  inspec init TEMPLATE ...           # Scaffolds a new project
+  inspec json PATH                   # read all tests in PATH and generate a JSON summary
+  inspec shell                       # open an interactive debugging shell
+  inspec supermarket SUBCOMMAND ...  # Supermarket commands
+  inspec vendor PATH                 # Download all dependencies and generate a lockfile in a `vendor` directory
+  inspec version                     # prints the version of this tool
+
+Options:
+  l, [--log-level=LOG_LEVEL]         # Set the log level: info (default), debug, warn, error
+      [--log-location=LOG_LOCATION]  # Location to send diagnostic log messages to. (default: STDOUT or STDERR)
+      [--diagnose], [--no-diagnose]  # Show diagnostics (versions, configurations)
+
+```
 - How to invoke InSpec locally.
-- Using inspec detect locally.
+- Using Inspec detect locally.
 - Using InSpec to scan the local machine using a local profile.
 - Using InSpec to scan the local machine using a remote profile.
 - Invoking InSpec to check a profile contained on your local filesystem.
