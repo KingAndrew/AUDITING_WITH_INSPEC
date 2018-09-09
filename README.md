@@ -293,6 +293,37 @@ Test Summary: 1 successful, 0 failures, 0 skipped
 - Invoking InSpec to check a profile stored on a remote server via git.
 - Invoking specific controls. 
 
+### PACKAGING PROFILES
+You can also package a profile as a compressed archive to make it easier to share. You can package profiles in tar.gz or zip format.  Before packaging your profiles check its validity with **inspec check**.  If it checks out package your profiles with the **inspec archive** PATH command.
+```
+>inspec archive auditd
+I, [2018-09-09T14:37:57.195990 #206]  INFO -- : Checking profile in auditd
+I, [2018-09-09T14:37:57.196243 #206]  INFO -- : Metadata OK.
+I, [2018-09-09T14:37:57.198839 #206]  INFO -- : Found 1 controls.
+I, [2018-09-09T14:37:57.198943 #206]  INFO -- : Control definitions OK.
+I, [2018-09-09T14:37:57.199372 #206]  INFO -- : Generate archive /root/auditd-0.1.0.tar.gz.
+I, [2018-09-09T14:37:57.208862 #206]  INFO -- : Finished archive generation.
+
+#look to see if it worked
+>ls | grep auditd
+auditd
+auditd-0.1.0.tar.gz
+```
+
+To run from the archive:
+```
+>inspec exec auditd-0.1.0.tar.gz
+
+Profile: InSpec Profile (auditd)
+Version: 0.1.0
+Target:  local://
+
+  System Package auditd
+     ✔  should be installed
+
+Test Summary: 1 successful, 0 failures, 0 skipped
+```
+
 ### RUNNING ON A REMOTE SYSTEM
 To run a profile remotely, you run **inspec exec** much like you do locally. However, you also specify the **-t** (target) argument to specify the URI of your target system.
 
@@ -305,7 +336,22 @@ Let's break down the target argument, ssh://root:password@target:
 Candidates should understand:
 
 - Using inspec detect on a remote system.
-- Using InSpec to scan a local Linux system using a remote profile.
+- Using InSpec to scan a local Linux system using a remote (Github) profile.
+```
+inspec exec https://github.com/learn-chef/auditd/releases/download/v0.1.0/auditd-0.1.0.tar.gz
+[2018-09-09T14:44:38+00:00] WARN: Unrecognized content type: application/octet-stream. Assuming tar.gz
+
+Profile: InSpec Profile (auditd)
+Version: 0.1.0
+Target:  local://
+
+  System Package auditd
+     ✔  should be installed
+
+Test Summary: 1 successful, 0 failures, 0 skipped
+```
+
+
 - Using InSpec to scan a remote Linux system using a local profile.
 
 
