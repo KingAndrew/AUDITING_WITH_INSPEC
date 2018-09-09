@@ -116,6 +116,11 @@ An InSpec test is called a control. Controls are grouped into profiles.
 To run a profile remotely, you run **inspec exec** much like you do locally. However, you also specify the **-t** (target) argument to specify the URI of your target system.
 
 ### RUNNING ON A REMOTE SYSTEMS VIA SSH
+Let's break down the target argument, ssh://root:password@target:
+- ssh:// is the scheme. It specifies an SSH connection.
+- root:password is the username and password for the account that permits SSH access. inspec exec also supports key-based authentication.
+- target is the hostname of the target system. You could also specify a target system by its IP address.
+
 Candidates should understand:
 
 - Using inspec detect on a remote system.
