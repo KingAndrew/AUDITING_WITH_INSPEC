@@ -39,27 +39,7 @@ Candidates should understand:
 - Invoking InSpec to check a profile stored on a remote server via git.
 - Invoking specific controls.
 An InSpec test is called a control. Controls are grouped into profiles. 
-### Profile Structure
-A profile should have the following structure:
-```
-   examples/profile   
-    ├── README.md
-    ├── controls
-    │   ├── example.rb
-    │   └── control_etc.rb
-    ├── libraries
-    │   └── extension.rb
-    |── files
-    │   └── extras.conf
-    └── inspec.yml
-    
-where:
- - inspec.yml includes the profile description (required)
- - controls is the directory in which all tests are located (required)
- - libraries is the directory in which all InSpec resource extensions are located (optional)
- - files is the directory with additional files that a profile can access (optional)
- - README.md should be used to explain the profile, its scope, and usage
-```
+
 ### RUNNING ON A REMOTE SYSTEMS VIA SSH
 Candidates should understand:
 - Using inspec detect on a remote system.
@@ -98,6 +78,44 @@ Candidates should understand:
 - How to execute an SQL query within a control.
 
 ## 3. INSPEC PROFILES
+### Profile Structure
+A profile should have the following structure:
+```
+   examples/profile   
+    ├── README.md
+    ├── controls
+    │   ├── example.rb
+    │   └── control_etc.rb
+    ├── libraries
+    │   └── extension.rb
+    |── files
+    │   └── extras.conf
+    └── inspec.yml
+    
+where:
+ - inspec.yml includes the profile description (required)
+ - controls is the directory in which all tests are located (required)
+ - libraries is the directory in which all InSpec resource extensions are located (optional)
+ - files is the directory with additional files that a profile can access (optional)
+ - README.md should be used to explain the profile, its scope, and usage
+```
+
+### inspec.yml
+Each profile must have an inspec.yml file that defines the following information:
+
+Use ***name*** to specify a unique name for the profile. Required.
+Use ***title*** to specify a human-readable name for the profile.
+Use ***maintainer*** to specify the profile maintainer.
+Use ***copyright*** to specify the copyright holder.
+Use ***copyright_email*** to specify support contact information for the profile, typically an email address.
+Use ***license*** to specify the license for the profile.
+Use ***summary*** to specify a one line summary for the profile.
+Use ***description*** to specify a multiple line description of the profile.
+Use ***version*** to specify the profile version.
+Use ***inspec_version*** to place SemVer constraints on the version of InSpec that the profile can run under.
+Use supports*** to specify a list of supported platform targets.
+Use ***depends*** to define a list of profiles on which this profile depends.
+***name*** is required; all other profile settings are optional.
 
 ### METADATA AND THE LOCK FILE
 Candidates should understand:
