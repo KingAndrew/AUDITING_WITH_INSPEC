@@ -15,6 +15,9 @@ Candidates must show:
 Candidates should understand:
 - Software InSpec requires on a workstation invoking an InSpec command.
 - Software InSpec requires on a target.
+  ```
+  InSpec works over the SSH protocol when scanning Linux systems, and the WinRM protocol when scanning Windows systems. Therefore, InSpec requires no software to be installed on the target system.
+  ```
 - Installing InSpec on containers.
 - How InSpec knows what command to run on a target for a particular resource.
 
