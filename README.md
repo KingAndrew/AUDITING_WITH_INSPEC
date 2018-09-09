@@ -37,8 +37,7 @@ An InSpec test is called a control. Controls are grouped into profiles.
 ### Profile Structure
 A profile should have the following structure:
 ````
-   examples/profile
-   
+   examples/profile   
     ├── README.md
     ├── controls
     │   ├── example.rb
