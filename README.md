@@ -103,7 +103,7 @@ Candidates should understand:
 - What SQL database resources are available, and their matchers.
 - How to execute an SQL query within a control.
 
-## 3. INSPEC PROFILES
+## 3. [INSPEC PROFILES](https://www.inspec.io/docs/reference/profiles/ "Inspec profile docs")
 ### Profile Structure
 A profile should have the following structure:
 ```
