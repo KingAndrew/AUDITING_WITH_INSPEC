@@ -103,32 +103,78 @@ where:
 ### inspec.yml
 Each profile must have an inspec.yml file that defines the following information:
 
-Use **name** to specify a unique name for the profile. Required.
-
+Use **name** to specify a unique name for the profile. **Required**.
+```
+name: ssh
+```
 Use **title** to specify a human-readable name for the profile.
-
+```
+title: Basic SSH
+```
 Use **maintainer** to specify the profile maintainer.
-
+```
+maintainer: Chef Software, Inc.
+```
 Use **copyright** to specify the copyright holder.
-
+```
+copyright: Chef Software, Inc.
+```
 Use **copyright_email** to specify support contact information for the profile, typically an email address.
-
+```
+copyright_email: support@chef.io
+```
 Use **license** to specify the license for the profile.
-
-Use **summary** to specify a one line summary for the profile.
-
-Use **description** to specify a multiple line description of the profile.
-
+```
+license: Proprietary, All rights reserved
+```
+Use **summary** to specify a *one line* summary for the profile.
+```
+summary: Verify that SSH Server and SSH Client are configured securely
+```
+Use **description** to specify a *multiple line* description of the profile.
+```
+description: Verify that SSH Server 
+             and SSH Client are 
+             configured securely
+```
 Use **version** to specify the profile version.
-
+```
+version: 1.0.0
+```
 Use **inspec_version** to place SemVer constraints on the version of InSpec that the profile can run under.
-
+```
+inspec_version: "~> 2.1"
+```
 Use **supports** to specify a list of supported platform targets.
-
+```
+supports:
+  - os-family: linux
+```
 Use **depends** to define a list of profiles on which this profile depends.
-
+```
+depends:
+  - name: profile
+    path: ../path/to/profile
+```
 **name** is **required**; all other profile settings are optional.
 
+For example:
+```
+name: ssh
+title: Basic SSH
+maintainer: Chef Software, Inc.
+copyright: Chef Software, Inc.
+copyright_email: support@chef.io
+license: Proprietary, All rights reserved
+summary: Verify that SSH Server and SSH Client are configured securely
+version: 1.0.0
+supports:
+  - os-family: linux
+depends:
+  - name: profile
+    path: ../path/to/profile
+inspec_version: "~> 2.1"
+```
 
 
 ### METADATA AND THE LOCK FILE
