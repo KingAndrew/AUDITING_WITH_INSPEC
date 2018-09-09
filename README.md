@@ -1,13 +1,13 @@
 # AUDITING WITH INSPEC BADGE TOPICS 
-# A.K.A. Inspec Certification Study Guide
+# A.K.A. InSpec Certification Study Guide
 The Auditing With InSpec badge is awarded when someone proves that they understand the
 core elements of InSpec. 
 
 ### An InSpec test is called a control. Controls are grouped into profiles.
 
 Candidates must show:
-1.  An understanding of installing inspec.
-2.  An understanding of inspec profiles.
+1.  An understanding of installing InSpec.
+2.  An understanding of InSpec profiles.
 3.  An understanding of running inspec.
 4.  An understanding of controls and metadata.
 5.  An understanding of troubleshooting InSpec.
@@ -18,8 +18,8 @@ Candidates must show:
 ### INSPEC INSTALLATION AND TARGET NODE
 
 Candidates should understand:
-- Software inSpec requires on a workstation invoking an InSpec command.
-- Software inSpec requires on a target.
+- Software InSpec requires on a workstation so you can invoke an inspec command.
+- Software InSpec requires on a target.
   ```
   InSpec works over the SSH protocol when scanning Linux systems, 
   and the WinRM protocol when scanning Windows systems. 
