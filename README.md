@@ -141,7 +141,7 @@ Use **version** to specify the profile version.
 ```
 version: 1.0.0
 ```
-Use **inspec_version** to place SemVer constraints on the version of InSpec that the profile can run under.
+Use **inspec_version** to place Semantic Versioning (SemVer) constraints on the version of InSpec that the profile can run under.
 ```
 inspec_version: "~> 2.1"
 ```
