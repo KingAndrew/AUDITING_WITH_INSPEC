@@ -57,6 +57,18 @@ Options:
       [--diagnose], [--no-diagnose]  # Show diagnostics (versions, configurations)
 
 ```
+Here is an example:
+```
+>inspec detect
+
+== Platform Details
+
+Name:      ubuntu
+Families:  debian, linux, unix
+Release:   16.04
+Arch:      x86_64
+```
+
 - How to invoke InSpec locally.
 - Using Inspec detect locally.
 - Using InSpec to scan the local machine using a local profile.
