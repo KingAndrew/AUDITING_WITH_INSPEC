@@ -4,175 +4,33 @@ The Auditing With InSpec badge is awarded when someone proves that they understa
 core elements of InSpec. 
 Candidates must show:
 1.  An understanding of installing inspec.
-2.  An understanding of running inspec.
-3.  An understanding of inspec profiles.
+2.  An understanding of inspec profiles.
+3.  An understanding of running inspec.
 4.  An understanding of controls and metadata.
 5.  An understanding of troubleshooting InSpec.
+**Note:** I switched 2 and 3 from the official order for a better flow while learning.
 
 ## 1. INSTALLING INSPEC
 ### INSPEC INSTALLATION AND TARGET NODE
 
 Candidates should understand:
-- Software InSpec requires on a workstation invoking an InSpec command.
-- Software InSpec requires on a target.
+- Software inSpec requires on a workstation invoking an InSpec command.
+- Software inSpec requires on a target.
   ```
   InSpec works over the SSH protocol when scanning Linux systems, 
   and the WinRM protocol when scanning Windows systems. 
   Therefore, InSpec requires no software to be installed on the target system.
   ```
-- Installing InSpec on containers.
-- How InSpec knows what command to run on a target for a particular resource.
+- Installing inSpec on containers.
+- How inSpec knows what command to run on a target for a particular resource.
 
 ### CHEFDK INSPEC OMNIBUS AND RUBYGEM
 Candidates should understand:
 - How to install InSpec software on a workstation.
 - ChefDK vs. InSpec Omnibus vs. Ruby Gem.
 
-## 2. RUNNING INSPEC
-### RUNNING ON A LOCAL SYSTEM
-Candidates should understand:
-- What inspec commands are available.
-```
->inspec help
-Commands:
-  inspec archive PATH                # archive a profile to tar.gz (default) or zip
-  inspec artifact SUBCOMMAND ...     # Sign, verify and install artifacts
-  inspec check PATH                  # verify all tests at the specified PATH
-  inspec compliance SUBCOMMAND ...   # Chef Compliance commands
-  inspec detect                      # detect the target OS
-  inspec env                         # Output shell-appropriate completion configuration
-  inspec exec PATHS                  # run all test files at the specified PATH.
-  inspec habitat SUBCOMMAND ...      # Commands for InSpec + Habitat Integration
-  inspec help [COMMAND]              # Describe available commands or one specific command
-  inspec init TEMPLATE ...           # Scaffolds a new project
-  inspec json PATH                   # read all tests in PATH and generate a JSON summary
-  inspec shell                       # open an interactive debugging shell
-  inspec supermarket SUBCOMMAND ...  # Supermarket commands
-  inspec vendor PATH                 # Download all dependencies and generate a lockfile in a `vendor` directory
-  inspec version                     # prints the version of this tool
 
-Options:
-  l, [--log-level=LOG_LEVEL]         # Set the log level: info (default), debug, warn, error
-      [--log-location=LOG_LOCATION]  # Location to send diagnostic log messages to. (default: STDOUT or STDERR)
-      [--diagnose], [--no-diagnose]  # Show diagnostics (versions, configurations)
-
-```
-- How to invoke inSpec locally.
-```
-inspec exec PATHS                  # run all test files at the specified PATH.
-```
-- Using Inspec detect locally.
-```
->inspec detect
-
-== Platform Details
-
-Name:      ubuntu
-Families:  debian, linux, unix
-Release:   16.04
-Arch:      x86_64
-```
-- Using inSpec to scan the local machine using a local profile.
-An inSpec profile is identified by its pathname. So if we have the following profile:
-```
-./auditd
-|-- README.md
-|-- controls
-|   `-- example.rb
-|-- inspec.lock
-`-- inspec.yml
-```
-We can check to make sure the profile is valid.
-```
->inspec check ./auditd
-Location:    ./auditd
-Profile:     auditd
-Controls:    1
-Timestamp:   2018-09-09T13:06:30+00:00
-Valid:       true
-
-No errors or warnings
-```
-Now we know that the profile is valid we can run the profile with inspec like so:
-```
-inspec exec ./auditd
-
-Profile: InSpec Profile (auditd)
-Version: 0.1.0
-Target:  local://
-
-  System Package auditd
-     ✔  should be installed
-
-Test Summary: 1 successful, 0 failures, 0 skipped
-```
-- Using InSpec to scan the local machine using a remote profile.
-- Invoking InSpec to check a profile contained on your local filesystem.
-- Invoking InSpec to check a profile stored on a remote server via git.
-- Invoking specific controls.
-An InSpec test is called a control. Controls are grouped into profiles. 
-
-### RUNNING ON A REMOTE SYSTEM
-To run a profile remotely, you run **inspec exec** much like you do locally. However, you also specify the **-t** (target) argument to specify the URI of your target system.
-
-### RUNNING ON A REMOTE SYSTEMS VIA SSH
-Let's break down the target argument, ssh://root:password@target:
-- ssh:// is the scheme. It specifies an SSH connection.
-- root:password is the username and password for the account that permits SSH access. inspec exec also supports key-based authentication.
-- target is the hostname of the target system. You could also specify a target system by its IP address.
-
-Candidates should understand:
-
-- Using inspec detect on a remote system.
-- Using InSpec to scan a local Linux system using a remote profile.
-- Using InSpec to scan a remote Linux system using a local profile.
-
-
-- Using InSpec to scan a remote Linux system using a remote profile.
-- Using basic authentication to authenticate with a target system over SSH.
-- Using keys to authenticate with a target system over SSH.
-- Executing InSpec on a remote Linux system from the command line
-- Outputting InSpec scan results as JSON.
-
-### RUNNING ON REMOTE SYSTEMS VIA WINRM
-Candidates should understand:
-- Using InSpec to scan a local Windows system using a local profile.
-- Using InSpec to scan a local Windows system using a remote profile.
-- Using InSpec to scan a remote Windows system using a local profile.
-- Using InSpec to scan a remote Windows system using a remote profile.
-- Authenticating with a target system over WinRM.
-
-### RUNNING ON CONTAINERS
-Candidates should understand:
-- Using inSpec to scan a docker container using a local profile.
-```
-inspec exec auditd -t ssh://root:password@target
-
-Profile: InSpec Profile (auditd)
-Version: 0.1.0
-Target:  ssh://root@target:22
-
-  System Package auditd
-     ×  should be installed
-     expected that `System Package auditd` is installed
-
-Test Summary: 0 successful, 1 failure, 0 skipped
-```
-- Using InSpec to scan a docker container using a remote profile.
-- Authenticating with a docker container with InSpec.
-
-### EXAMINING AN API ENDPOINT
-Candidates should understand:
-- The protocols you'd use to test a remote target
-- What resource would you use to test URLs
-- Implementing resource packs – e.g. AWS, Azure, VMWare.
-
-### EXAMINING A DATABASE
-Candidates should understand:
-- What SQL database resources are available, and their matchers.
-- How to execute an SQL query within a control.
-
-## 3. [INSPEC PROFILES](https://www.inspec.io/docs/reference/profiles/ "Inspec profile docs")
+## 2. [INSPEC PROFILES](https://www.inspec.io/docs/reference/profiles/ "Inspec profile docs")
 ### Profile Structure
 A profile should have the following structure:
 ```
@@ -271,7 +129,6 @@ depends:
 inspec_version: "~> 2.1"
 ```
 
-
 ### METADATA AND THE LOCK FILE
 Candidates should understand:
 - The purpose of the inspec.yml file.
@@ -348,6 +205,150 @@ Candidates should understand:
 - How you would share a custom profile with the community.
 - How you would run a profile directly from GitHub or the Supermarket.
 
+
+## 3. RUNNING INSPEC
+### RUNNING ON A LOCAL SYSTEM
+Candidates should understand:
+- What inspec commands are available.
+```
+>inspec help
+Commands:
+  inspec archive PATH                # archive a profile to tar.gz (default) or zip
+  inspec artifact SUBCOMMAND ...     # Sign, verify and install artifacts
+  inspec check PATH                  # verify all tests at the specified PATH
+  inspec compliance SUBCOMMAND ...   # Chef Compliance commands
+  inspec detect                      # detect the target OS
+  inspec env                         # Output shell-appropriate completion configuration
+  inspec exec PATHS                  # run all test files at the specified PATH.
+  inspec habitat SUBCOMMAND ...      # Commands for InSpec + Habitat Integration
+  inspec help [COMMAND]              # Describe available commands or one specific command
+  inspec init TEMPLATE ...           # Scaffolds a new project
+  inspec json PATH                   # read all tests in PATH and generate a JSON summary
+  inspec shell                       # open an interactive debugging shell
+  inspec supermarket SUBCOMMAND ...  # Supermarket commands
+  inspec vendor PATH                 # Download all dependencies and generate a lockfile in a `vendor` directory
+  inspec version                     # prints the version of this tool
+
+Options:
+  l, [--log-level=LOG_LEVEL]         # Set the log level: info (default), debug, warn, error
+      [--log-location=LOG_LOCATION]  # Location to send diagnostic log messages to. (default: STDOUT or STDERR)
+      [--diagnose], [--no-diagnose]  # Show diagnostics (versions, configurations)
+
+```
+- How to invoke inSpec locally.
+```
+inspec exec PATHS                  # run all test files at the specified PATH.
+```
+- Using Inspec detect locally.
+```
+>inspec detect
+
+== Platform Details
+
+Name:      ubuntu
+Families:  debian, linux, unix
+Release:   16.04
+Arch:      x86_64
+```
+- Using inSpec to scan the local machine using a local profile.
+An inSpec profile is identified by its pathname. So if we have the following profile:
+```
+./auditd
+|-- README.md
+|-- controls
+|   `-- example.rb
+|-- inspec.lock
+`-- inspec.yml
+```
+- Invoking InSpec to check a profile contained on your local filesystem.
+We can check to make sure the profile is valid.
+```
+>inspec check ./auditd
+Location:    ./auditd
+Profile:     auditd
+Controls:    1
+Timestamp:   2018-09-09T13:06:30+00:00
+Valid:       true
+
+No errors or warnings
+```
+Now we know that the profile is valid we can run the profile with inspec like so:
+```
+inspec exec ./auditd
+
+Profile: InSpec Profile (auditd)
+Version: 0.1.0
+Target:  local://
+
+  System Package auditd
+     ✔  should be installed
+
+Test Summary: 1 successful, 0 failures, 0 skipped
+```
+- Using InSpec to scan the local machine using a remote profile.
+- Invoking InSpec to check a profile stored on a remote server via git.
+- Invoking specific controls.
+An InSpec test is called a control. Controls are grouped into profiles. 
+
+### RUNNING ON A REMOTE SYSTEM
+To run a profile remotely, you run **inspec exec** much like you do locally. However, you also specify the **-t** (target) argument to specify the URI of your target system.
+
+### RUNNING ON A REMOTE SYSTEMS VIA SSH
+Let's break down the target argument, ssh://root:password@target:
+- ssh:// is the scheme. It specifies an SSH connection.
+- root:password is the username and password for the account that permits SSH access. inspec exec also supports key-based authentication.
+- target is the hostname of the target system. You could also specify a target system by its IP address.
+
+Candidates should understand:
+
+- Using inspec detect on a remote system.
+- Using InSpec to scan a local Linux system using a remote profile.
+- Using InSpec to scan a remote Linux system using a local profile.
+
+
+- Using InSpec to scan a remote Linux system using a remote profile.
+- Using basic authentication to authenticate with a target system over SSH.
+- Using keys to authenticate with a target system over SSH.
+- Executing InSpec on a remote Linux system from the command line
+- Outputting InSpec scan results as JSON.
+
+### RUNNING ON REMOTE SYSTEMS VIA WINRM
+Candidates should understand:
+- Using InSpec to scan a local Windows system using a local profile.
+- Using InSpec to scan a local Windows system using a remote profile.
+- Using InSpec to scan a remote Windows system using a local profile.
+- Using InSpec to scan a remote Windows system using a remote profile.
+- Authenticating with a target system over WinRM.
+
+### RUNNING ON CONTAINERS
+Candidates should understand:
+- Using inSpec to scan a docker container using a local profile.
+```
+inspec exec auditd -t ssh://root:password@target
+
+Profile: InSpec Profile (auditd)
+Version: 0.1.0
+Target:  ssh://root@target:22
+
+  System Package auditd
+     ×  should be installed
+     expected that `System Package auditd` is installed
+
+Test Summary: 0 successful, 1 failure, 0 skipped
+```
+- Using InSpec to scan a docker container using a remote profile.
+- Authenticating with a docker container with InSpec.
+
+### EXAMINING AN API ENDPOINT
+Candidates should understand:
+- The protocols you'd use to test a remote target
+- What resource would you use to test URLs
+- Implementing resource packs – e.g. AWS, Azure, VMWare.
+
+### EXAMINING A DATABASE
+Candidates should understand:
+- What SQL database resources are available, and their matchers.
+- How to execute an SQL query within a control.
 
 ## 4. CONTROLS AND METADATA
 ### USING CONTROL METADATA
