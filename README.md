@@ -2,12 +2,16 @@
 # A.K.A. Inspec Certification Study Guide
 The Auditing With InSpec badge is awarded when someone proves that they understand the
 core elements of InSpec. 
+
+### An InSpec test is called a control. Controls are grouped into profiles.
+
 Candidates must show:
 1.  An understanding of installing inspec.
 2.  An understanding of inspec profiles.
 3.  An understanding of running inspec.
 4.  An understanding of controls and metadata.
 5.  An understanding of troubleshooting InSpec.
+
 **Note:** I switched 2 and 3 from the official order for a better flow while learning.
 
 ## 1. INSTALLING INSPEC
@@ -28,8 +32,6 @@ Candidates should understand:
 Candidates should understand:
 - How to install InSpec software on a workstation.
 - ChefDK vs. InSpec Omnibus vs. Ruby Gem.
-
-### An InSpec test is called a control. Controls are grouped into profiles.
 
 ## 2. [INSPEC PROFILES](https://www.inspec.io/docs/reference/profiles/ "Inspec profile docs")
 
