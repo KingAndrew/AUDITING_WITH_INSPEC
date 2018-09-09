@@ -57,7 +57,11 @@ Options:
       [--diagnose], [--no-diagnose]  # Show diagnostics (versions, configurations)
 
 ```
-Here is an example:
+- How to invoke inSpec locally.
+```
+inspec exec PATHS                  # run all test files at the specified PATH.
+```
+- Using Inspec detect locally.
 ```
 >inspec detect
 
@@ -68,10 +72,29 @@ Families:  debian, linux, unix
 Release:   16.04
 Arch:      x86_64
 ```
-
-- How to invoke InSpec locally.
-- Using Inspec detect locally.
 - Using InSpec to scan the local machine using a local profile.
+An InSpec profile is identified by its pathname. So if we have the following profile:
+```
+./auditd
+|-- README.md
+|-- controls
+|   `-- example.rb
+|-- inspec.lock
+`-- inspec.yml
+```
+We can run inspec like so:
+```
+inspec exec ./auditd
+
+Profile: InSpec Profile (auditd)
+Version: 0.1.0
+Target:  local://
+
+  System Package auditd
+     ✔  should be installed
+
+Test Summary: 1 successful, 0 failures, 0 skipped
+```
 - Using InSpec to scan the local machine using a remote profile.
 - Invoking InSpec to check a profile contained on your local filesystem.
 - Invoking InSpec to check a profile stored on a remote server via git.
