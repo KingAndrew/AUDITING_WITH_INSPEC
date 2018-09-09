@@ -36,27 +36,19 @@ Candidates should understand:
 An InSpec test is called a control. Controls are grouped into profiles. 
 ### Profile Structure
 A profile should have the following structure:
-
+````
    examples/profile
    
     ├── README.md
-    
     ├── controls
-    
     │   ├── example.rb
-    
     │   └── control_etc.rb
-    
     ├── libraries
-    
     │   └── extension.rb
-    
     |── files
-    
     │   └── extras.conf
-    
     └── inspec.yml
-    
+````    
 where:
 
 inspec.yml includes the profile description (required)
