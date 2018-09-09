@@ -29,8 +29,10 @@ Candidates should understand:
 - How to install InSpec software on a workstation.
 - ChefDK vs. InSpec Omnibus vs. Ruby Gem.
 
+### An InSpec test is called a control. Controls are grouped into profiles.
 
 ## 2. [INSPEC PROFILES](https://www.inspec.io/docs/reference/profiles/ "Inspec profile docs")
+
 ### Profile Structure
 A profile should have the following structure:
 ```
@@ -287,8 +289,7 @@ Test Summary: 1 successful, 0 failures, 0 skipped
 ```
 - Using InSpec to scan the local machine using a remote profile.
 - Invoking InSpec to check a profile stored on a remote server via git.
-- Invoking specific controls.
-An InSpec test is called a control. Controls are grouped into profiles. 
+- Invoking specific controls. 
 
 ### RUNNING ON A REMOTE SYSTEM
 To run a profile remotely, you run **inspec exec** much like you do locally. However, you also specify the **-t** (target) argument to specify the URI of your target system.
