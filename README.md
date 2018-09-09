@@ -72,8 +72,8 @@ Families:  debian, linux, unix
 Release:   16.04
 Arch:      x86_64
 ```
-- Using InSpec to scan the local machine using a local profile.
-An InSpec profile is identified by its pathname. So if we have the following profile:
+- Using inSpec to scan the local machine using a local profile.
+An inSpec profile is identified by its pathname. So if we have the following profile:
 ```
 ./auditd
 |-- README.md
@@ -82,7 +82,18 @@ An InSpec profile is identified by its pathname. So if we have the following pro
 |-- inspec.lock
 `-- inspec.yml
 ```
-We can run inspec like so:
+We can check to make sure the profile is valid.
+```
+>inspec check ./auditd
+Location:    ./auditd
+Profile:     auditd
+Controls:    1
+Timestamp:   2018-09-09T13:06:30+00:00
+Valid:       true
+
+No errors or warnings
+```
+Now we know that the profile is valid we can run the profile with inspec like so:
 ```
 inspec exec ./auditd
 
