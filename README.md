@@ -19,6 +19,7 @@ Candidates must show:
 
 Candidates should understand:
 - Software InSpec requires on a workstation so you can invoke an inspec command.
+The workstation is your machine that you use on a daily basis.  Install inspec on it and you can keep your profiles locally or run remote profiles while targeting remote machines to inspect. 
 - Software InSpec requires on a target.
   ```
   InSpec works over the SSH protocol when scanning Linux systems, 
@@ -31,7 +32,48 @@ Candidates should understand:
 ### CHEFDK INSPEC OMNIBUS AND RUBYGEM
 Candidates should understand:
 - How to install InSpec software on a workstation.
+
 - ChefDK vs. InSpec Omnibus vs. Ruby Gem.
+InSpec requires Ruby ( >2.2 ).
+### CHEFDK
+Install the [Chef DK](https://downloads.chef.io/chefdk/). Choose this option if you're a Chef user or are interested in using Chef to correct compliance failures. The Chef DK includes InSpec.
+
+### INSPEC
+Install the [InSpec CLI](https://downloads.chef.io/inspec/). Choose this option if you're interested only in InSpec or have an existing way to correct compliance failures.
+### Install as package
+
+The InSpec package is available for MacOS, RedHat, Ubuntu and Windows. Download the latest package at [InSpec Downloads](https://downloads.chef.io/inspec) or install InSpec via script:
+
+```
+# RedHat, Ubuntu, and macOS
+curl https://omnitruck.chef.io/install.sh | sudo bash -s -- -P inspec
+
+# Windows
+. { iwr -useb https://omnitruck.chef.io/install.ps1 } | iex; install -project inspec
+```
+
+### Install it via rubygems.org
+
+When installing from source, gem dependencies may require ruby build tools to be installed.
+
+For CentOS/RedHat/Fedora:
+
+```bash
+yum -y install ruby ruby-devel make gcc gcc-c++
+```
+
+For Ubuntu:
+
+```bash
+apt-get -y install ruby ruby-dev gcc g++ make
+```
+
+To install inspec from [rubygems](https://rubygems.org/):
+
+```bash
+gem install inspec
+```
+
 
 ## 2. [INSPEC PROFILES](https://www.inspec.io/docs/reference/profiles/ "Inspec profile docs")
 
@@ -143,7 +185,6 @@ Candidates should understand:
 - Updating the 'inspec.lock' file.
 - Setting profile metadata.
 - Managing updates from upstream profiles.
-- Auditing with InSpec Page 3 v0.0.1
 
 ### PROFILE VERSION SEMVER AND CONSTRAINTS
 Candidates should understand:
@@ -191,7 +232,6 @@ Candidates should understand:
 - Why you would use attributes.
 - How and where attribute values are defined.
 - How to reference attributes within a control file.
-- Auditing with InSpec Page 4 v0.0.1
 - Where default values for profile attributes are defined.
 
 ### TESTING EITHER/OR CONFIGURATION CHECKS
@@ -404,6 +444,69 @@ Test Summary: 52 successful, 4 failures, 38 skipped
 - Using keys to authenticate with a target system over SSH.
 - Executing InSpec on a remote Linux system from the command line
 - Outputting InSpec scan results as JSON.
+The inspec exec command provides the --reporter argument, which transforms the output to a predefined format.
+
+Run the following command to run the auditd profile on your target system and format the output as JSON. In this example, the output is piped to jq, which pretty-prints the output.
+```
+>inspec exec auditd --reporter=json | jq
+{
+  "platform": {
+    "name": "ubuntu",
+    "release": "16.04"
+  },
+  "profiles": [
+    {
+      "name": "auditd",
+      "version": "0.1.0",
+      "sha256": "9a0b08f182493acf3e4a89df6c4e20d65f6754cd3199285a5fa73352abd7b0bb",
+      "title": "InSpec Profile",
+      "maintainer": "The Authors",
+      "summary": "An InSpec Compliance Profile",
+      "license": "Apache-2.0",
+      "copyright": "The Authors",
+      "copyright_email": "you@example.com",
+      "supports": [],
+      "attributes": [],
+      "groups": [
+        {
+          "id": "controls/example.rb",
+          "controls": [
+            "(generated from example.rb:1 a569767460cfcf7703e90eb97dbcc004)"
+          ]
+        }
+      ],
+      "controls": [
+        {
+          "id": "(generated from example.rb:1 a569767460cfcf7703e90eb97dbcc004)",
+          "title": null,
+          "desc": null,
+          "impact": 0.5,
+          "refs": [],
+          "tags": {},
+          "code": "",
+          "source_location": {
+            "line": 89,
+            "ref": "/opt/inspec/embedded/lib/ruby/gems/2.4.0/gems/inspec-2.0.17/lib/inspec/control_eval_context.rb"
+          },
+          "results": [
+            {
+              "status": "passed",
+              "code_desc": "System Package auditd should be installed",
+              "run_time": 0.0211904,
+              "start_time": "2018-09-10T09:49:16+00:00"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "statistics": {
+    "duration": 0.0221925
+  },
+  "version": "2.0.17"
+}
+
+```
 
 ### RUNNING ON REMOTE SYSTEMS VIA WINRM
 Candidates should understand:
