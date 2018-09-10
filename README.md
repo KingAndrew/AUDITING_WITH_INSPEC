@@ -549,11 +549,49 @@ Candidates should understand:
 - How to execute an SQL query within a control.
 
 ## 4. CONTROLS AND METADATA
+### Default control created with **inspec init profile* PATH
+```
+>inspec init profile my_nginx
+Create new profile at /root/my_nginx
+ * Create directory controls
+ * Create file controls/example.rb
+ * Create file inspec.yml
+ * Create directory libraries
+ * Create file README.md
+ 
+ >cat my_nginx/controls/example.rb
+# encoding: utf-8
+# copyright: 2018, The Authors
+
+title 'sample section'                     # 
+
+# you can also use plain tests
+describe file('/tmp') do
+  it { should be_directory }
+end
+
+# you add 1 0r more controls here
+control 'tmp-1.0' do                        # A unique ID for this control
+  impact 0.7                                # The criticality, if this control fails.
+  title 'Create /tmp directory'             # A human-readable title
+  desc 'An optional description...'
+  describe file('/tmp') do                  # The actual test
+    it { should be_directory }
+  end
+end                                         # end of control 'tmp-1.0'
+ 
+```
+- control (line 12) is followed by the control's name. Each control in a profile has a unique name- - .
+- impact (line 13) measures the relative importance of the test and must be a value between 0.0 an- d 1.0.
+- title (line 14) defines the control's purpose.
+- desc (line 15) provides a more complete description of what the control checks for.
+- describe (lines 16 — 18) defines the test. Here, the test checks for the existence of the /tmp directory.
+
 ### Executing only specific controls
-Use the --controls argument to run only certain controls.
+Use the **--controls** argument to run only certain controls.
 For example in this case, the "package-09" control.
 
-Run the inspec exec command again, this time specifying the --controls package-09 argument.
+Run the **inspec exec** command again, this time specifying the **--controls package-09** argument.
 ```
 inspec exec https://github.com/dev-sec/linux-baseline -t ssh://root:password@target --controls package-09
 
