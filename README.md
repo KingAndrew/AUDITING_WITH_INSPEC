@@ -99,8 +99,12 @@ where:
  - README.md should be used to explain the profile, its scope, and usage
 ```
 
+### METADATA AND THE LOCK FILE
+Candidates should understand:
+- The purpose of the inspec.yml file.
+The purpose of the inspec.yml file is to provide metadata about the profile.
 ### inspec.yml
-Each profile must have an inspec.yml file that defines the following information:
+Each profile must have an inspec.yml file that defines the following metadata:
 
 Use **name** to specify a unique name for the profile. **Required**.
 ```
@@ -175,15 +179,13 @@ depends:
 inspec_version: "~> 2.1"
 ```
 
-### METADATA AND THE LOCK FILE
-Candidates should understand:
-- The purpose of the inspec.yml file.
 - How an InSpec profile's name and version are defined.
 - How to define profile dependencies.
 - What it means to 'vendor' profiles.
 - What the 'inspec.lock' file is.
 - Updating the 'inspec.lock' file.
 - Setting profile metadata.
+See inspec.yml
 - Managing updates from upstream profiles.
 
 ### PROFILE VERSION SEMVER AND CONSTRAINTS
