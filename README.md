@@ -290,13 +290,42 @@ Target:  local://
 Test Summary: 1 successful, 0 failures, 0 skipped
 ```
 - Using InSpec to scan the local machine using a remote profile.
+The Chef supermarket contains chef recipies as well as inspec profiles.  Here we execute a supermarket profile against the local machine.  
+```
+>inspec supermarket exec dev-sec/linux-baseline
+
+Profile: DevSec Linux Security Baseline (linux-baseline)
+Version: 2.2.2
+Target:  local://
+
+  ✔  os-01: Trusted hosts login
+     ✔  File /etc/hosts.equiv should not exist
+  ✔  os-02: Check owner and permissions for /etc/shadow
+     ✔  File /etc/shadow should exist
+     ✔  File /etc/shadow should be file
+     ✔  File /etc/shadow should be owned by "root"
+... -snip- ...
+Profile Summary: 13 successful controls, 3 control failures, 38 controls skipped
+Test Summary: 51 successful, 5 failures, 38 skipped
+```
 - Invoking InSpec to check a profile stored on a remote server via git.
+```
+>inspec check https://github.com/learn-chef/auditd/
+
+Location:    https://github.com/learn-chef/auditd/
+Profile:     auditd
+Controls:    1
+Timestamp:   2018-09-09T14:57:20+00:00
+Valid:       true
+
+No errors or warnings
+```
 - Invoking specific controls. 
 
 ### PACKAGING PROFILES
 You can also package a profile as a compressed archive to make it easier to share. You can package profiles in tar.gz or zip format.  Before packaging your profiles check its validity with **inspec check**.  If it checks out package your profiles with the **inspec archive** PATH command.
 ```
->inspec archive auditd
+>inspec archive ./auditd
 I, [2018-09-09T14:37:57.195990 #206]  INFO -- : Checking profile in auditd
 I, [2018-09-09T14:37:57.196243 #206]  INFO -- : Metadata OK.
 I, [2018-09-09T14:37:57.198839 #206]  INFO -- : Found 1 controls.
@@ -339,7 +368,6 @@ Candidates should understand:
 - Using InSpec to scan a local Linux system using a remote (Github) profile.
 ```
 inspec exec https://github.com/learn-chef/auditd/releases/download/v0.1.0/auditd-0.1.0.tar.gz
-[2018-09-09T14:44:38+00:00] WARN: Unrecognized content type: application/octet-stream. Assuming tar.gz
 
 Profile: InSpec Profile (auditd)
 Version: 0.1.0
@@ -351,11 +379,27 @@ Target:  local://
 Test Summary: 1 successful, 0 failures, 0 skipped
 ```
 
-
 - Using InSpec to scan a remote Linux system using a local profile.
 
 
 - Using InSpec to scan a remote Linux system using a remote profile.
+```
+>inspec supermarket exec dev-sec/linux-baseline -t ssh://root:password@target
+
+Profile: DevSec Linux Security Baseline (linux-baseline)
+Version: 2.2.2
+Target:  ssh://root@target:22
+
+  ✔  os-01: Trusted hosts login
+     ✔  File /etc/hosts.equiv should not exist
+  ✔  os-02: Check owner and permissions for /etc/shadow
+     ✔  File /etc/shadow should exist
+     ✔  File /etc/shadow should be file
+     ✔  File /etc/shadow should be owned by "root"
+...-snip-...
+Profile Summary: 14 successful controls, 2 control failures, 38 controls skipped
+Test Summary: 52 successful, 4 failures, 38 skipped
+```
 - Using basic authentication to authenticate with a target system over SSH.
 - Using keys to authenticate with a target system over SSH.
 - Executing InSpec on a remote Linux system from the command line
@@ -400,6 +444,27 @@ Candidates should understand:
 - How to execute an SQL query within a control.
 
 ## 4. CONTROLS AND METADATA
+### Executing only specific controls
+Use the --controls argument to run only certain controls.
+For example in this case, the "package-09" control.
+
+Run the inspec exec command again, this time specifying the --controls package-09 argument.
+```
+inspec exec https://github.com/dev-sec/linux-baseline -t ssh://root:password@target --controls package-09
+
+Profile: DevSec Linux Security Baseline (linux-baseline)
+Version: 2.2.2
+Target:  ssh://root@target:22
+
+  ✔  package-09: CIS: Additional process hardening
+     ✔  System Package prelink should not be installed
+
+
+Profile Summary: 1 successful control, 0 control failures, 0 controls skipped
+Test Summary: 1 successful, 0 failures, 0 skipped
+```
+You see only the results for the "package-09" control. As a bonus, the profile took less time to run.
+
 ### USING CONTROL METADATA
 Candidates should understand:
 - What a control's impact metadata defines.
