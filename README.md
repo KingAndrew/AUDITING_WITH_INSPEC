@@ -640,7 +640,23 @@ Candidates should understand:
 ### USING THE INSPEC SHELL
 Candidates should understand:
 - What InSpec Shell is.
+  - InSpec shell enables you to explore InSpec interactively
 - Launching InSpec Shell
+  - Run **inspec shell** to enter the interactive session.
+```
+>inspec shell
+Welcome to the interactive InSpec Shell
+To find out how to use it, type: help
+
+You are currently running on:
+
+    Name:      ubuntu
+    Families:  debian, linux, unix
+    Release:   16.04
+    Arch:      x86_64
+
+inspec>
+```
 - Using InSpec Shell.
 - How you would invoke InSpec shell on a target over SSH
 - Loading core resources into InSpec Shell.
