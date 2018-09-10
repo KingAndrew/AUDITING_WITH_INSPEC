@@ -549,7 +549,7 @@ Candidates should understand:
 - How to execute an SQL query within a control.
 
 ## 4. CONTROLS AND METADATA
-### Default control created with **inspec init profile* PATH
+### Default control created with _inspec init profile_ PATH
 ```
 >inspec init profile my_nginx
 Create new profile at /root/my_nginx
@@ -563,7 +563,7 @@ Create new profile at /root/my_nginx
 # encoding: utf-8
 # copyright: 2018, The Authors
 
-title 'sample section'                     # 
+title 'sample section' 
 
 # you can also use plain tests
 describe file('/tmp') do
