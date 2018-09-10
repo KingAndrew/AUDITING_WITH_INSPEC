@@ -549,7 +549,17 @@ Candidates should understand:
 - How to execute an SQL query within a control.
 
 ## 4. CONTROLS AND METADATA
-### Default control created with _inspec init profile_ PATH
+An InSpec control always contains at least one **describe block**. However, a control can contain _many describe blocks_.  
+
+An InSpec test has two main components: _the subject to examine_ and the _subject's expected state_
+Here's the format of a describe block.
+```
+describe <entity> do     # <entity> is the subject to examine. ex. a package name, service, file, or network port. 
+  it { <expectation> }   # <expectation> specifies the expected state. ex. a port should be open or should not be open.
+end
+```
+
+Default control created with **inspec init profile** PATH
 ```
 >inspec init profile my_nginx
 Create new profile at /root/my_nginx
@@ -566,8 +576,8 @@ Create new profile at /root/my_nginx
 title 'sample section' 
 
 # you can also use plain tests
-describe file('/tmp') do
-  it { should be_directory }
+describe file('/tmp') do                    
+  it { should be_directory }                 
 end
 
 # you add 1 0r more controls here
@@ -581,12 +591,16 @@ control 'tmp-1.0' do                        # A unique ID for this control
 end                                         # end of control 'tmp-1.0'
  
 ```
-- control (line 12) is followed by the control's name. Each control in a profile has a unique name- - .
-- impact (line 13) measures the relative importance of the test and must be a value between 0.0 an- d 1.0.
-- title (line 14) defines the control's purpose.
-- desc (line 15) provides a more complete description of what the control checks for.
-- describe (lines 16 — 18) defines the test. Here, the test checks for the existence of the /tmp directory.
-
+- **control** is followed by the control's name. Each control in a profile has a unique name- - .
+- **impact** measures the relative importance of the test and must be a value between 0.0 an- d 1.0.
+- **title** defines the control's purpose.
+- **desc** provides a more complete description of what the control checks for.
+- **describe** defines the test. Here, the test checks for the existence of the /tmp directory.
+  - **file** is an InSpec resource.  The file resource provides the **be_directory** matcher.
+  - **it** statement validates one of your resource's features
+  - **should** asserts the condition that follows should be true.
+  - **be_directory** is an example of a matcher. A matcher compares a resource's actual value to its expected value.
+  
 ### Executing only specific controls
 Use the **--controls** argument to run only certain controls.
 For example in this case, the "package-09" control.
