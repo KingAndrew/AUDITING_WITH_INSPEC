@@ -723,7 +723,8 @@ Web Reference:
 https://www.inspec.io/docs/reference/resources/aws_ec2_instance
 
 ```
-- How you would invoke InSpec shell on a target over SSH
+- How you would invoke InSpec shell on a target over SSH?
+
 To invoke the InSpec shell on a target machine over ssh use the **-t** argument and the **ssh** scheme
 ```
 >inspec shell -t ssh://root:password@target
