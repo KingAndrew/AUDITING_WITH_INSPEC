@@ -658,6 +658,87 @@ You are currently running on:
 inspec>
 ```
 - Using InSpec Shell.
+Run **help** to see what commands are available
+```
+inspec> help
+You are currently running on:
+
+    Name:      ubuntu
+    Families:  debian, linux, unix
+    Release:   16.04
+    Arch:      x86_64
+
+Available commands:
+
+    `[resource]` - run resource on target machine
+    `help resources` - show all available resources that can be used as commands
+    `help [resource]` - information about a specific resource
+    `help matchers` - show information about common matchers
+    `exit` - exit the InSpec shell
+
+You can use resources in this environment to test the target machine. For example:
+
+    command('uname -a').stdout
+    file('/proc/cpuinfo').content => "value"
+```
+Run **help resources** to see which resources are available.
+```
+inspec> help resources
+ - aide_conf
+ - apache
+ - apache_conf
+ - apt
+ - audit_policy
+ - auditd
+ - auditd_conf
+ - aws_cloudtrail_trail
+ - aws_cloudtrail_trails
+ - aws_cloudwatch_alarm
+ - aws_cloudwatch_log_metric_filter
+ - aws_ec2_instance
+ ...-snip-...
+```
+Run **help {resource]** for information about a specific resource
+```
+inspec> help aws_ec2_instance
+Name: aws_ec2_instance
+
+Description:
+
+Verifies settings for an EC2 instance
+
+Example:
+    describe aws_ec2_instance('i-123456') do
+  it { should be_running }
+  it { should have_roles }
+end
+ describe aws_ec2_instance(name: 'my-instance') do
+  it { should be_running }
+  it { should have_roles }
+end
+
+
+Web Reference:
+
+https://www.inspec.io/docs/reference/resources/aws_ec2_instance
+
+```
 - How you would invoke InSpec shell on a target over SSH
+To invoke the InSpec shell on a target machine over ssh use the **-t** argument and the **ssh** scheme
+```
+>inspec shell -t ssh://root:password@target
+Welcome to the interactive InSpec Shell
+To find out how to use it, type: help
+
+You are currently running on:
+
+    Name:      ubuntu
+    Families:  debian, linux, unix
+    Release:   16.04
+    Arch:      x86_64
+
+inspec>
+```
+
 - Loading core resources into InSpec Shell.
 - Loading custom resources into InSpec Shell.
