@@ -1,5 +1,7 @@
 # AUDITING WITH INSPEC BADGE TOPICS 
 # A.K.A. InSpec Certification Study Guide
+**Attribution:** Most of the data here is from the [Chef Rally modules](https://learn.chef.io/tracks/compliance-automation#/, InSpec Modules) that pertain to inspec.
+
 The Auditing With InSpec badge is awarded when someone proves that they understand the
 core elements of InSpec. 
 
@@ -227,6 +229,12 @@ Candidates should understand:
 - How to invoke a custom resource defined in a dependent profile.
 - How to invoke a custom resource defined in a dependent resource pack.
 - What happens if a custom resource is given the same name as a core resource.
+
+### PROFILE FILES
+A profile file enables you to separate the logic of your tests from the data your tests validate. A profile file is typically expressed as a YAML file.  Profile files exist in your profile's files directory. 
+
+The files directory is not created if you use **inspec init*** So you will need to create
+
 
 ### PROFILE ATTRIBUTES
 - Candidates should understand:
