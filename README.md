@@ -1,6 +1,6 @@
 # AUDITING WITH INSPEC BADGE TOPICS 
 # A.K.A. InSpec Certification Study Guide
-**Attribution:** Most of the data here is from the [Chef Rally modules](https://learn.chef.io/tracks/compliance-automation#/, InSpec Modules) that pertain to inspec.
+**Attribution:** Most of the data here is from the [Chef Rally modules](https://learn.chef.io/tracks/compliance-automation#/ "InSpec Modules") that pertain to inspec.
 
 The Auditing With InSpec badge is awarded when someone proves that they understand the
 core elements of InSpec. 
